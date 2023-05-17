@@ -12,7 +12,9 @@ def start(message):
     btn2 = types.KeyboardButton('Удалить фото')
     btn3 = types.KeyboardButton('Изменить текст')
     markup.row(btn2, btn3)
-    bot.send_message(message.chat.id, f'Привет , {message.from_user.first_name} {message.from_user.last_name}', reply_markup=markup)
+    file = open('./photo.jpeg','rb')
+    bot.send_photo(message.chat.id, file, reply_markup=markup)
+    #bot.send_message(message.chat.id, f'Привет , {message.from_user.first_name} {message.from_user.last_name}', reply_markup=markup)
     bot.register_next_step_handler(message, on_click)
 
 def on_click(message):
